@@ -5,7 +5,7 @@ import React, { useState } from "react";
 const Body: React.FC = () => {
   return (
     <div className="p-4">
-      <div className="mx-auto text-green-200 border border-[#c8eed6]/25 shadow-lg shadow-[#4add80]/10 w-fit font-medium text-sm rounded-full  bg-gradient-to-b from-[#737b88]/20 to-[#191b1e]/20 p-[1.5px]">
+      <div className="mx-auto text-green-200 border border-[#c8eed6]/25 mt-10 shadow-lg shadow-[#4add80]/10 w-fit font-medium text-sm rounded-full  bg-gradient-to-b from-[#737b88]/20 to-[#191b1e]/20 p-[1.5px]">
         <div className="bg-[#15171a]/50 flex items-center space-x-1 py-1 px-2 rounded-full ">
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -23,15 +23,15 @@ const Body: React.FC = () => {
         </div>
       </div>
 
-      <div className="p-4 text-center">
-        <h1 className="text-4xl font-bold flex items-center justify-center ">
+      <div className="p-4 text-center mb-2">
+        <h1 className="text-6xl font-bold flex items-center justify-center ">
           YouTube Clip Maker
         </h1>
-        <p className="flex items-center justify-center mt-2">
+        <p className="flex items-center justify-center px-10 md:px-40 lg:px-96 mt-2">
           Turn long YouTube videos into short clips instantly.
-          <br />
+          
           Intelligent summarization, auto-cropping, and
-          <br />
+          
           customized extraction. Edit your results easily.
         </p>
       </div>

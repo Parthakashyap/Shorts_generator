@@ -1,75 +1,76 @@
 "use client";
-import React, { useState } from "react";
+import React, { useState } from 'react';
+import { Menu, X } from 'lucide-react';
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
 
+  const toggleMenu = () => setIsOpen(!isOpen);
+
   return (
-    <nav className="relative flex items-center justify-between flex-wrap bg-opacity-50 backdrop-blur-md p-6 shadow-lg border border-transparent font-roboto">
-      <div className="flex items-center flex-shrink-0 text-white mr-6">
-        <span className="font-bold text-2xl tracking-tight">Ai Video</span>
-      </div>
-      <div className="block md:hidden">
-        <button
-          className="flex items-center px-3 py-2 border rounded-full text-white border-transparent hover:border-teal-400 hover:bg-gray-700 transition-colors duration-300 transform hover:scale-105"
-          onClick={() => setIsOpen(!isOpen)}
-        >
-          <svg
-            className="fill-current h-5 w-5"
-            viewBox="0 0 20 20"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <title>Menu</title>
-            <path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z" />
-          </svg>
-        </button>
-      </div>
-      <div
-        className={`${
-          isOpen ? `block` : `hidden`
-        } w-full block flex-grow md:flex md:items-center md:w-auto`}
-      >
-        <div className="text-md md:flex-grow flex items-center justify-center gap-4">
-          <a
-            href="#solutions"
-            className="block mt-4 md:inline-block font-semibold md:mt-0 text-white hover:text-teal-400 mx-2 transition-transform duration-300 transform hover:scale-105"
-          >
-            ClipAnything
-          </a>
-          <a
-            href="#solutions"
-            className="block mt-4 md:inline-block font-semibold md:mt-0 text-white hover:text-teal-400 mx-2 transition-transform duration-300 transform hover:scale-105"
-          >
-            Solutions
-          </a>
-          <a
-            href="#resources"
-            className="block mt-4 md:inline-block font-semibold md:mt-0 text-white hover:text-teal-400 mx-2 transition-transform duration-300 transform hover:scale-105"
-          >
-            Resources
-          </a>
-          <a
-            href="#pricing"
-            className="block mt-4 md:inline-block font-semibold md:mt-0 text-white hover:text-teal-400 mx-2 transition-transform duration-300 transform hover:scale-105"
-          >
-            Pricing
-          </a>
-        </div>
-        <div className="flex flex-col md:flex-row md:ml-auto">
-          <a
-            href="#signin"
-            className="inline-block text-sm px-4 py-2 leading-none border rounded-full text-white border-transparent hover:border-teal-400 hover:text-teal-500 hover:bg-white mt-4 md:mt-0 md:mr-4 transition-transform duration-300 transform hover:scale-105"
-          >
-            Sign In
-          </a>
-          <a
-            href="#login"
-            className="inline-block text-sm px-4 py-2 leading-none border rounded-full text-white border-transparent hover:border-teal-400 hover:text-teal-500 hover:bg-white mt-4 md:mt-0 transition-transform duration-300 transform hover:scale-105"
-          >
-            Login
-          </a>
+    <nav className="bg-black relative z-[999999999] bg-opacity-80 backdrop-filter backdrop-blur-lg text-gray-300 border-b border-teal-900">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex items-center justify-between h-16">
+          <div className="flex items-center">
+            <div className="flex-shrink-0">
+              <span className="text-2xl font-bold bg-white text-transparent bg-clip-text">Ai Video</span>
+            </div>
+          </div>
+          <div className="hidden md:block">
+            <div className="ml-10 flex items-center space-x-4">
+              {['ClipAnything', 'Solutions', 'Resources', 'Pricing'].map((item) => (
+                <a
+                  key={item}
+                  href={`#${item.toLowerCase()}`}
+                  className="px-3 py-2 rounded-md text-sm font-medium hover:bg-gray-800 hover:text-teal-400 transition duration-300 ease-in-out transform hover:-translate-y-1"
+                >
+                  {item}
+                </a>
+              ))}
+            </div>
+          </div>
+          <div className="hidden md:flex gap-4">
+            <button className="bg-gradient-to-r from-teal-500 to-blue-500 text-white px-4 py-2 rounded-md text-sm font-medium transition duration-300 ease-in-out transform hover:scale-105 hover:shadow-lg">
+              Sign In
+            </button>
+            <button className="bg-gradient-to-r from-teal-500 to-blue-500 text-white px-4 py-2 rounded-md text-sm font-medium transition duration-300 ease-in-out transform hover:scale-105 hover:shadow-lg">
+              Sign Up
+            </button>
+          </div>
+          <div className="md:hidden">
+            <button
+              onClick={toggleMenu}
+              className="inline-flex items-center justify-center p-2 rounded-md text-teal-400 hover:text-white hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-teal-500"
+            >
+              {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+            </button>
+          </div>
         </div>
       </div>
+
+      {isOpen && (
+        <div className="md:hidden">
+          <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+            {['ClipAnything', 'Solutions', 'Resources', 'Pricing'].map((item) => (
+              <a
+                key={item}
+                href={`#${item.toLowerCase()}`}
+                className="block px-3 py-2 rounded-md text-base font-medium hover:bg-gray-800 hover:text-teal-400 transition duration-300 ease-in-out"
+              >
+                {item}
+              </a>
+            ))}
+          </div>
+          <div className="pt-4 pb-3 border-t border-teal-900 flex gap-4 px-4">
+            <button className="block w-full text-center px-3 py-2 rounded-md text-base font-medium bg-gradient-to-r from-teal-500 to-blue-500 text-white transition duration-300 ease-in-out transform hover:scale-105">
+              Sign In
+            </button>
+            <button className="block w-full text-center px-3 py-2 rounded-md text-base font-medium bg-gradient-to-r from-teal-500 to-blue-500 text-white transition duration-300 ease-in-out transform hover:scale-105">
+              Sign Up
+            </button>
+          </div>
+        </div>
+      )}
     </nav>
   );
 };
